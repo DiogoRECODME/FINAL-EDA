@@ -1,0 +1,39 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.UserInfoVM;
+@model ClientVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+            <form asp-action="New">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                
+                <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                    <label asp-for="ProfileId" class="control-label"></label>
+                    <div class="ml-2">
+                        <select asp-items="@ViewBag.Profiles" asp-for="ProfileId" class="form-control fk-select">
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <span asp-validation-for="ProfileId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group ml-4">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,31 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.UserInfoVM;
+@model ClientVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.ProfileId)
+
+                </dt>
+                <dd class="col-10">
+                    @{
+                        var profile = ViewData["Profile"] as ProfileVM;
+                    }
+                    <a asp-controller="Profiles" asp-action="Details" asp-route-id="@profile.Id">@(profile.FullName + " -- " + profile.Country)</a>
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+
+</div>

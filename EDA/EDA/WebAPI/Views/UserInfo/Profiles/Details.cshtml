@@ -1,0 +1,48 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.UserInfoVM;
+@model ProfileVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.FullName)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.FullName)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Country)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Country)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.BeginDate)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.BeginDate)
+                </dd>
+            </dl>
+            
+        </div>
+    </div>
+
+</div>

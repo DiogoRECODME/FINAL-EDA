@@ -1,0 +1,51 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.JobInfoVM;
+@model ProposalVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Sender)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Sender)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Message)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Message)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.JobId)
+
+                </dt>
+                <dd class="col-10">
+                    @{ 
+                        var job = ViewData["Job"] as JobVM;
+                    }
+                    <a asp-controller="Jobs" asp-action="Details" asp-route-id="@job.Id">@(job.Address + " -- STARTING at " + job.StartDate)</a>
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+
+</div>

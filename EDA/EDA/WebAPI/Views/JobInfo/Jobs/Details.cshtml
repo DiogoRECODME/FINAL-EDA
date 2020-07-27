@@ -1,0 +1,119 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.JobInfoVM;
+@using Recodme.Rd.EDA.WebAPI.Models.ServiceInfoVM;
+@using Recodme.Rd.EDA.WebAPI.Models.UserInfoVM;
+@using Recodme.Rd.EDA.BusinessLayer.BO.UserInfoBO;
+@model JobVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Address)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.StartDate)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.EndDate)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Budget)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Budget)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Status)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Rating)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Rating) &#11088;
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.Rated)
+
+                </dt>
+                <dd class="col-10">
+                    @Html.DisplayFor(model => model.Rated)
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.ServiceId)
+
+                </dt>
+                <dd class="col-10">
+                    @{
+                        var service = ViewData["Service"] as ServiceVM;
+                    }
+                    <a asp-controller="Services" asp-action="Details" asp-route-id="@service.Id">@service.Name</a>
+                </dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.ClientId)
+
+                </dt>
+                <dd class="col-10">
+                    @{
+                        var client = ViewData["Client"] as ClientVM;
+                        ProfileBO pBO = new ProfileBO();
+                        var clientName = await pBO.ReadAsync(client.ProfileId);
+                    }
+                    <a asp-controller="Clients" asp-action="Details" asp-route-id="@client.Id">@(clientName.Result.FullName + " -- " + clientName.Result.Country)</a>
+                </dd>
+            </dl>
+
+        </div>
+    </div>
+
+</div>

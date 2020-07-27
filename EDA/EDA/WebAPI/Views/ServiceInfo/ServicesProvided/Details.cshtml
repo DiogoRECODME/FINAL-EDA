@@ -1,0 +1,32 @@
+﻿@using Recodme.Rd.EDA.WebAPI.Models.ServiceInfoVM;
+@model ServiceProvidedVM
+
+<div class="card">
+
+    <div class="card-header">
+        <h2 class="float-left">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card-body">
+        <div class="ml-5 mr-5">
+
+            <dl class="row">
+                <dt class="col-2">
+                    @Html.DisplayNameFor(model => model.ServiceId)
+
+                </dt>
+                <dd class="col-10">
+                    @{ 
+                        var service = ViewData["Service"] as ServiceVM;
+                    }
+                    <a asp-controller="Services" asp-action="Details" asp-route-id="@service.Id">@service.Name</a>
+                </dd>
+            </dl>
+
+            
+        </div>
+    </div>
+
+</div>
